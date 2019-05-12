@@ -4,9 +4,7 @@
 
 using namespace std;
 
-tree_node* BST::search(int key){
-  tree_node* tree=NULL;
-  tree=getRoot();
+tree_node* BST::search(tree_node *tree,int key){
   if(tree==NULL){
     cout<<"xxx"<<endl;
     return NULL;  
@@ -22,26 +20,21 @@ tree_node* BST::search(int key){
   }
   return NULL;
 }
-tree_node* BST::getRoot(){
-  return root;
+tree_node *BST::search(int key){
+  return search(root, key);
 }
-void BST::setRoot(int key, string value){
-  cout<<"bbb"<<endl;
-  root->num=key;  //여기가 문젠데..
-  cout<<key<<endl;
-  root->str=value;
-  root->left_child=NULL;
-  root->right_child=NULL;
-}
-void BST::Add(int key, string value){
+
+
+
+tree_node* BST::Add(tree_node* tree, int key, string value){
   tree_node *parent = NULL;
-  tree_node *root=getRoot();
   parent = search(key);
   cout<<key<<endl;
   cout<<value<<endl;
-  if(root==NULL){
-    setRoot(key,value);
-    cout<<"zzz"<<endl;
+  if(tree==NULL){
+    tree->num=key;
+    tree->str=value;
+    cout<<tree->num<<endl;
   }  
   else if(parent==NULL){
     cout<<"already exit"<<endl;
