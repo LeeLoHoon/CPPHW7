@@ -8,7 +8,8 @@
 using namespace std;
 
 int main() {
-  //BST myBST;
+  BST *myBST;
+  myBST= new BST();
   ifstream fp;
   string fileName,value;
   char command;
@@ -20,19 +21,25 @@ int main() {
    	cerr << "Exception occurred while opening the file." << endl;}
   while(!fp.eof()){
     fp>>command;
-    if(command=="a"){
+    cout<<"hi"<<endl;
+    if(command=='a'){
+      cout<<command<<endl;
       fp>>key;
+      cout<<key<<endl;
       fp>>value;
-      BTS.Add(key,value);
+      cout<<value<<endl;
+      myBST->Add(key,value);
+      cout<<"hi"<<endl;
+      
     }
-    else if(command=="d"){
+    else if(command=='d'){
       fp>>key;
-      BTS.Delete(key);
+      myBST->Delete(key);
     }
-    else if(command=="p"){
-      BTS.Print();
+    else if(command=='p'){
+      myBST->Print();
     }
-    else if(command=="q") break;
+    else if(command=='q') break;
   }
   
 }
