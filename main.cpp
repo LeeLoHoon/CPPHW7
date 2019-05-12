@@ -1,45 +1,57 @@
 #include "BST.h" 
 #include <iostream>
-#include <fstream>
 #include <string>
 
-//command [key[value]] 순으로 받는데 if 문써서 하나씩 입력받음 받은게 a라면 key와 value를 순서대로 받고 d를 받으면 key만 받음 p를 받으면 더 받지 않고 모두 프린트하기 q를 받으면 프로그램 종료 ==>get함수에 넣기
-//BST에 구현되어야 할 함수 : search 함수, add 함수, delete함수, print함수, get함수
 using namespace std;
 
-int main() {
-  BST *myBST;
-  myBST= new BST();
-  ifstream fp;
-  string fileName,value;
-  char command;
-  int key;
-  try{
-    cin >> fileName;
-    fp.open(fileName);
-  }catch(const ifstream::failure& e){
-   	cerr << "Exception occurred while opening the file." << endl;}
-  while(!fp.eof()){
-    fp>>command;
-    cout<<"hi"<<endl;
-    if(command=='a'){
-      cout<<command<<endl;
-      fp>>key;
-      cout<<key<<endl;
-      fp>>value;
-      cout<<value<<endl;
-      myBST->Add(key,value);
-      cout<<"hi"<<endl;
-      
-    }
-    else if(command=='d'){
-      fp>>key;
-      myBST->Delete(key);
-    }
-    else if(command=='p'){
-      myBST->Print();
-    }
-    else if(command=='q') break;
+tree_node* BST::search(tree_node *tree,int key){
+  if(tree==NULL){
+    cout<<"xxx"<<endl;
+    return NULL;  
   }
-  
+  while(tree!=NULL){
+    if(tree->num ==key) return NULL;
+    else if (key<tree->num)
+      if(tree->left_child == NULL) return tree;
+      else tree=tree->left_child;
+    else                       
+      if (tree->right_child == NULL) return tree; 
+      else tree = tree->right_child;
+  }
+  return NULL;
+}
+tree_node *BST::search(int key){
+  return search(root, key);
+}
+
+
+
+tree_node* BST::Add(tree_node* tree, int key, string value){
+  tree_node *parent = NULL;
+  parent = search(key);
+  cout<<key<<endl;
+  cout<<value<<endl;
+  if(tree==NULL){
+    tree->num=key;
+    tree->str=value;
+    cout<<tree->num<<endl;
+  }  
+  else if(parent==NULL){
+    cout<<"already exit"<<endl;
+  }
+  else{
+    if(parent->num<key){
+      parent->left_child->num=key;
+      parent->left_child->str=value;}
+    else if(parent->num>key){
+      parent->right_child->num=key;
+      parent->right_child->str=value;}
+  }
+}
+void BST::Delete(int key){
+  cout<<"hu"<<endl;
+
+}
+void BST::Print(){
+  cout<<"hu"<<endl;
 }
