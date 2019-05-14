@@ -11,9 +11,8 @@ struct node *left_child, *right_child;
 } tree_node;
 
 class BST{
-  private:
-    tree_node* root;
   public: 
+    tree_node* root;
     BST(){
       root=NULL;
     };
@@ -28,7 +27,14 @@ class BST{
     void Add(int key, string value){
       root=Add(root,key,value);
     }
-    void Delete(int key);
-    void Print();
+    void Delete(int key){
+      root = Delete(root,key);
+    }
+    tree_node* Delete(tree_node* tree,int key);
+    void Print(){
+      Print(root);
+    }
+    tree_node* findMin(tree_node* tree);
+    void Print(tree_node* tree);
     //inorder로 print하기 key랑 value. A+B 순
 };
