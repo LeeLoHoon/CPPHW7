@@ -21,15 +21,11 @@ int main() {
    	cerr << "Exception occurred while opening the file." << endl;}
   while(!fp.eof()){
     fp>>command;
-    cout<<"hi"<<endl;
     if(command=='a'){
-      cout<<command<<endl;
       fp>>key;
-      cout<<key<<endl;
       fp>>value;
-      cout<<value<<endl;
+
       myBST->Add(key,value);
-      cout<<"hi"<<endl;
       
     }
     else if(command=='d'){
