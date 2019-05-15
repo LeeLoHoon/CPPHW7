@@ -107,8 +107,7 @@ void BST::Print(tree_node* tree){
   Print(tree->left_child);
   cout<<"("<<tree->num<<","<<tree->str<<")"<<endl;
   Print(tree->right_child);
-  
-  //cout<<root->right_child->left_child->left_child->num<<endl;
-  
-  //cout<<root->num<<root->str<<endl;
+
 }
+
+//해결해야 할 문제 :: 큰 트리에서 root를 지웟을때 에러뜸..
