@@ -6,7 +6,6 @@ using namespace std;
 
 tree_node* BST::search(tree_node *tree,int key){
   if(tree==NULL){
-    cout<<"xxx"<<endl;
     return NULL;  
   }
   while(tree!=NULL){
@@ -23,7 +22,6 @@ tree_node* BST::search(tree_node *tree,int key){
 tree_node *BST::search(int key){
   return search(root, key);
 }
-
 
 
 tree_node* BST::Add(tree_node* tree, int key, string value){
@@ -48,6 +46,7 @@ tree_node* BST::Add(tree_node* tree, int key, string value){
 }
 tree_node* BST::Delete(tree_node* tree,int key){
   tree_node* temp;
+  cout<<tree->num<<"now"<<endl;
   if(tree->num==key){
     if((tree->left_child==NULL)&&(tree->right_child==NULL)){
       tree=NULL;
@@ -55,20 +54,19 @@ tree_node* BST::Delete(tree_node* tree,int key){
     else if(tree->left_child==NULL){
       temp=tree;
       tree=tree->right_child;
-      
       delete temp;
-      
     }
     else if(tree->right_child==NULL){
       temp=tree;
       tree=tree->left_child;
       delete temp;
-      
     }
     else{
       int a;
       string b;
       temp=findMin(tree->right_child);
+      cout<<"hi"<<endl;
+      cout<<temp->num<<temp->str<<endl;
       a=temp->num;
       b=temp->str;
       Delete(a);
@@ -88,20 +86,20 @@ tree_node* BST::Delete(tree_node* tree,int key){
       return tree;}
     tree->left_child=Delete(tree->left_child,key);
     }
-
   return tree;
-
 }
 tree_node* BST::findMin(tree_node* tree){
-  tree_node* temp=NULL;
   if(tree->left_child==NULL){
-    temp=tree;
-    return temp;}
+    cout<<"go"<<endl;
+    cout<<tree->num<<endl;
+    return tree;}
   else {
     tree=tree->left_child;
+    cout<<tree->num<<"gh"<<endl;
     findMin(tree);
-    return tree;
+    
   }
+  return tree;
 }
 void BST::Print(tree_node* tree){
   if(tree == NULL)
@@ -109,4 +107,8 @@ void BST::Print(tree_node* tree){
   Print(tree->left_child);
   cout<<"("<<tree->num<<","<<tree->str<<")"<<endl;
   Print(tree->right_child);
+  
+  //cout<<root->right_child->left_child->left_child->num<<endl;
+  
+  //cout<<root->num<<root->str<<endl;
 }
