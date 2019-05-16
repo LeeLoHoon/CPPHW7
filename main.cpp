@@ -35,5 +35,4 @@ int main() {
     }
     else if(command=='q') break;
   }
-  
 }
