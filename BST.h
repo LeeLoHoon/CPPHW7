@@ -32,5 +32,4 @@ class BST{
     }
     tree_node* findMin(tree_node* tree);
     void Print(tree_node* tree);
-  
 };
